@@ -1,46 +1,114 @@
-# Getting Started with Create React App
+# My UI Component Library
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository contains a UI component library built with React and Storybook. It includes a variety of reusable components designed to be used in web applications.
 
-## Available Scripts
+## Components
 
-In the project directory, you can run:
+The library includes the following components:
 
-### `npm start`
+-   Button
+-   Label
+-   Text
+-   Table
+    -   TableHeader
+    -   TableRow
+    -   TableCell
+    -   TableFooter
+-   Dropdown
+-   RadioButton
+-   Img
+-   HeroImage
+-   Card
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Requirements
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+-   Each component folder contains the following files:
+    -   `Component_name.tsx`
+    -   `Component_name.stories.tsx`
+    -   `Component_name.types.tsx`
+    -   `Component_name.tests.tsx`
+    -   `index.ts`
+-   Styled Components are used for styling.
+-   All components are responsive.
+-   Storybook functionality will include:
+    -   Controls to modify properties such as default text and background color.
+    -   All components will have a default state and a disabled state.
+    -   Components will visually change color and the curser will indicate that the user cannot “click” on the component.
+    -   All components will have at least 2 tests:
+        -   A test that checks that the component is visible.
+        -   A test that checks that the background color changed when the component is in the ‘disabled’ state.
 
-### `npm test`
+##  Prerequisites
+Ensure you have the following installed:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Node.js (v18+)
+npm (Latest version)
+Docker (Latest version)       
 
-### `npm run build`
+## Install Dependencies
+Run the following inside the my_ui_library folder:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+cd my_ui_library
+npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Start Storybook
+To preview the component library:
+npm run storybook
 
-### `npm run eject`
+## Then open storybook http://127.0.0.1:6006 in your browser.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Getting Started
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+To run the component library locally using Docker, follow these steps:
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## **Build the Docker image:**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    ```bash
+    docker build -t callupe_roger_coding_assignment12 .
+    ```
+
+##  **Run the Docker container:**
+
+    ```bash
+    docker run -d -p 8083:8083 --name callupe_roger_coding_assignment12 callupe_roger_coding_assignment12
+    ```
+
+##  **Open the application in your browser:**
+
+    Navigate to `http://localhost:8083` or `http://127.0.0.1:8083` in your web browser.
+
+## Docker Information
+
+-   **Container Name:** `callupe_roger_coding_assignment12`
+-   **Port:** 8083
+-   **Working Directory:** `/callupe_roger_ui_garden`
+
+## Stop the Running Container
+
+docker stop callupe_roger_coding_assignment12
+## Remove the Container
+
+docker rm callupe_roger_coding_assignment12
+
+## 🛠 GitHub Repository
+ Push to GitHub
+ Run the following inside the library folder:
+
+git init
+git add .
+git commit -m "Component UI Library"
+git branch -M main
+git remote add origin https://github.com/<your-github-username>/component-library.git
+git push -u origin main
+
+## Then, check your repository at:
+🔗 https://github.com/<your-github-username>/component-library
+
+##  Final Notes
+✅ Storybook works at http://127.0.0.1:6006/
+✅ Dockerized app is running at http://127.0.0.1:8083/
+✅ All tests have passed
