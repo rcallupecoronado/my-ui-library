@@ -16,7 +16,7 @@ const App: React.FC = () => {
         <h1>Welcome to My UI Library</h1>
 
         {/* Button Component */}
-        <Button label="Click Me" />
+        <Button label="Click Me" onClick={() => alert('Button clicked!')} />
 
         {/* Label Component */}
         <Label text="This is a Label" />
