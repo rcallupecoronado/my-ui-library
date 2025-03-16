@@ -1,34 +1,52 @@
-import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
-import RadioButton from "./RadioButton";
+import React from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import RadioButton from './RadioButton';
 
-describe("RadioButton Component", () => {
-  test("renders the radio button", () => {
+describe('RadioButton Component', () => {
+  test('renders the radio button', () => {
     render(
-      <RadioButton label="Test Option" name="test" value="option1" checked={false} onChange={() => {}} />
+      <RadioButton
+        label="Test Option"
+        name="test"
+        value="option1"
+        checked={false}
+        onChange={() => {}}
+      />
     );
 
-    expect(screen.getByRole("radio")).toBeInTheDocument();
-    expect(screen.getByLabelText("Test Option")).toBeInTheDocument();
+    expect(screen.getByRole('radio')).toBeInTheDocument();
+    expect(screen.getByLabelText('Test Option')).toBeInTheDocument();
   });
 
-  test("calls onChange when clicked", () => {
+  test('calls onChange when clicked', () => {
     const mockOnChange = jest.fn();
     render(
-      <RadioButton label="Test Option" name="test" value="option1" checked={false} onChange={mockOnChange} />
+      <RadioButton
+        label="Test Option"
+        name="test"
+        value="option1"
+        checked={false}
+        onChange={mockOnChange}
+      />
     );
 
-    const radio = screen.getByRole("radio");
+    const radio = screen.getByRole('radio');
     fireEvent.click(radio);
 
     expect(mockOnChange).toHaveBeenCalledTimes(1);
   });
 
-  test("should be checked when passed checked=true", () => {
+  test('should be checked when passed checked=true', () => {
     render(
-      <RadioButton label="Checked Option" name="test" value="option2" checked={true} onChange={() => {}} />
+      <RadioButton
+        label="Checked Option"
+        name="test"
+        value="option2"
+        checked={true}
+        onChange={() => {}}
+      />
     );
 
-    expect(screen.getByRole("radio")).toBeChecked();
+    expect(screen.getByRole('radio')).toBeChecked();
   });
 });

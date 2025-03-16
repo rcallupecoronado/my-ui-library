@@ -1,10 +1,10 @@
-import React, { ChangeEvent } from "react";
+import { ChangeEvent } from 'react';
 
 export interface DropdownProps {
-    options: { value: string; label: string }[];
-    onChange: (e: ChangeEvent<HTMLSelectElement>) => void; // Change here
-    disabled?: boolean;
-    backgroundColor?: string;
-    textColor?: string;
-    disabledBackgroundColor?: string;
+  options: { value: string; label: string }[];
+  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  disabled?: boolean;
+  backgroundColor?: string;
+  textColor?: string;
+  disabledBackgroundColor?: string;
 }
