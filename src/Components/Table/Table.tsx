@@ -1,81 +1,74 @@
 import React from 'react';
 import styled from 'styled-components';
-import { TableProps } from './Table.types';
+
+interface TableProps {
+  headers: string[];
+  rows: (string | number)[][];
+  backgroundColor?: string;
+  textColor?: string;
+  headerBackgroundColor?: string;
+  headerTextColor?: string;
+}
 
 const StyledTable = styled.table<TableProps>`
   width: 100%;
   border-collapse: collapse;
-  overflow-x: auto;
-  display: block;
-  background-color: ${({
-    backgroundColor,
-    disabled,
-    disabledBackgroundColor,
-  }) =>
-    disabled
-      ? disabledBackgroundColor || '#e0e0e0'
-      : backgroundColor || 'white'};
+  background-color: ${({ backgroundColor }) => backgroundColor || 'white'};
   color: ${({ textColor }) => textColor || 'black'};
-  opacity: ${({ disabled }) => (disabled ? 0.6 : 1)};
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'default')};
 `;
 
 const StyledTh = styled.th<TableProps>`
   background-color: ${({ headerBackgroundColor }) =>
-    headerBackgroundColor || '#f4f4f4'};
+    headerBackgroundColor || '#f2f2f2'};
   color: ${({ headerTextColor }) => headerTextColor || 'black'};
-  padding: 10px;
+  padding: 8px;
   border: 1px solid #ddd;
   text-align: left;
 `;
 
 const StyledTd = styled.td`
-  padding: 10px;
+  padding: 8px;
   border: 1px solid #ddd;
 `;
 
 const Table: React.FC<TableProps> = ({
-  headers = [],
-  rows = [],
+  headers,
+  rows,
   backgroundColor,
   textColor,
   headerBackgroundColor,
   headerTextColor,
-  disabled,
-  disabledBackgroundColor,
-  ...props
 }) => {
   return (
     <StyledTable
-      aria-label="Data Table"
+      headers={headers} // ✅ Ensure headers are passed
+      rows={rows} // ✅ Ensure rows are passed
       backgroundColor={backgroundColor}
       textColor={textColor}
-      disabled={disabled}
-      disabledBackgroundColor={disabledBackgroundColor}
     >
       <thead>
         <tr>
-          {headers.length > 0 &&
-            headers.map((header, index) => (
-              <StyledTh
-                key={index}
-                headerBackgroundColor={headerBackgroundColor}
-                headerTextColor={headerTextColor}
-              >
-                {header}
-              </StyledTh>
-            ))}
+          {headers.map((header, index) => (
+            <StyledTh
+              key={index}
+              headers={headers}
+              rows={rows}
+              headerBackgroundColor={headerBackgroundColor}
+              headerTextColor={headerTextColor}
+            >
+              {header}
+            </StyledTh>
+          ))}
         </tr>
       </thead>
       <tbody>
-        {rows.length > 0 &&
-          rows.map((row, rowIndex) => (
-            <tr key={rowIndex}>
-              {row.map((cell, cellIndex) => (
-                <StyledTd key={cellIndex}>{cell}</StyledTd>
-              ))}
-            </tr>
-          ))}
+        {rows.map((row, rowIndex) => (
+          <tr key={rowIndex}>
+            {row.map((cell, cellIndex) => (
+              <StyledTd key={cellIndex}>{cell}</StyledTd>
+            ))}
+          </tr>
+        ))}
       </tbody>
     </StyledTable>
   );

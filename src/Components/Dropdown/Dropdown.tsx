@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import styled from 'styled-components';
-import { DropdownProps } from './Dropdown.types';
 
-const StyledSelect = styled.select<DropdownProps>`
+interface DropdownProps {
+  options: { value: string; label: string }[];
+  onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
+  defaultValue: string;
+  disabled?: boolean;
+  backgroundColor?: string;
+  textColor?: string;
+  disabledBackgroundColor?: string;
+}
+
+const StyledSelect = styled.select<{
+  disabled?: boolean;
+  backgroundColor?: string;
+  textColor?: string;
+  disabledBackgroundColor?: string;
+}>`
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: ${({
-    backgroundColor,
     disabled,
+    backgroundColor,
     disabledBackgroundColor,
   }) =>
     disabled
@@ -22,6 +36,7 @@ const StyledSelect = styled.select<DropdownProps>`
 const Dropdown: React.FC<DropdownProps> = ({
   options,
   onChange,
+  defaultValue,
   disabled,
   backgroundColor,
   textColor,
@@ -30,17 +45,17 @@ const Dropdown: React.FC<DropdownProps> = ({
   return (
     <StyledSelect
       onChange={onChange}
-      defaultValue=""
+      defaultValue={defaultValue}
       disabled={disabled}
       backgroundColor={backgroundColor}
       textColor={textColor}
       disabledBackgroundColor={disabledBackgroundColor}
     >
-      <option value="" disabled>
+      <option disabled value="">
         Select an option
       </option>
       {options.map((option, index) => (
-        <option key={`${option.value}-${index}`} value={option.value}>
+        <option key={index} value={option.value}>
           {option.label}
         </option>
       ))}

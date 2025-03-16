@@ -19,6 +19,7 @@ const StyledCard = styled.div<{
 
 const Card: React.FC<CardProps> = ({
   title,
+  description,
   content,
   children,
   backgroundColor,
@@ -33,6 +34,7 @@ const Card: React.FC<CardProps> = ({
       role="region"
     >
       <h3>{title}</h3>
+      <p>{description}</p>
       <p>{content}</p>
       {children && <div>{children}</div>}
     </StyledCard>

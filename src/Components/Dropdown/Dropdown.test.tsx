@@ -9,7 +9,8 @@ describe('Dropdown Component', () => {
           { value: 'option1', label: 'Option 1' },
           { value: 'option2', label: 'Option 2' },
         ]}
-        onChange={() => {}}
+        onChange={jest.fn()}
+        defaultValue=""
       />
     );
     expect(screen.getByText('Select an option')).toBeInTheDocument();

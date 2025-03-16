@@ -1,6 +1,6 @@
 export interface TableProps {
   headers: string[];
-  rows: string[][];
+  rows: (string | number)[][];
   className?: string;
   backgroundColor?: string;
   textColor?: string;
