@@ -10,7 +10,9 @@ describe('RadioButton Component', () => {
         name="test"
         value="option1"
         checked={false}
-        onChange={() => {}}
+        onChange={() => {
+          // No-op for test
+        }}
       />
     );
 
@@ -43,7 +45,9 @@ describe('RadioButton Component', () => {
         name="test"
         value="option2"
         checked={true}
-        onChange={() => {}}
+        onChange={() => {
+          // No-op for test
+        }}
       />
     );
 

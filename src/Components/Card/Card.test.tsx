@@ -13,7 +13,6 @@ const TestWrapper: React.FC<{
 }> = ({
   title,
   content,
-  children,
   testBackgroundColor,
   testDisabled,
   testTextColor,
@@ -28,7 +27,6 @@ const TestWrapper: React.FC<{
     <Card
       title={title}
       content={content}
-      children={children}
       backgroundColor={testBackgroundColor}
       disabled={testDisabled}
       textColor={testTextColor}

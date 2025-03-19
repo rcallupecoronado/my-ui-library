@@ -1,7 +1,7 @@
-import { onCLS, onFID, onLCP, onTTFB } from 'web-vitals';
+import { onCLS, onFID, onLCP, onTTFB, ReportHandler } from 'web-vitals';
 
-const reportWebVitals = (onPerfEntry?: (metric: any) => void) => {
-  if (onPerfEntry && onPerfEntry instanceof Function) {
+const reportWebVitals = (onPerfEntry?: ReportHandler) => {
+  if (onPerfEntry && typeof onPerfEntry === 'function') {
     onCLS(onPerfEntry);
     onFID(onPerfEntry);
     onLCP(onPerfEntry);

@@ -4,32 +4,32 @@ import Button from './Button';
 
 describe('Button Component', () => {
   test('renders the button with given label', () => {
-    render(<Button label="Click Me" onClick={() => {}} disabled={false} />);
-    expect(screen.getByText('Click Me')).toBeInTheDocument();
+    render(<Button label="Click Me" onClick={jest.fn()} disabled={false} />);
+    expect(
+      screen.getByRole('button', { name: 'Click Me' })
+    ).toBeInTheDocument();
   });
 
   test('button should be disabled when disabled prop is true', () => {
-    render(<Button label="Disabled" onClick={() => {}} disabled={true} />);
-    expect(screen.getByText('Disabled')).toBeDisabled();
+    render(<Button label="Disabled" onClick={jest.fn()} disabled={true} />);
+    expect(screen.getByRole('button', { name: 'Disabled' })).toBeDisabled();
   });
 
   test('calls onClick function when clicked', () => {
-    const handleClick = jest.fn(); // Mock function
+    const handleClick = jest.fn();
     render(<Button label="Click Me" onClick={handleClick} disabled={false} />);
-    fireEvent.click(screen.getByText('Click Me'));
+    fireEvent.click(screen.getByRole('button', { name: 'Click Me' }));
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
   test('checks that the component is visible', () => {
-    const { getByText } = render(<Button label="Visible" onClick={() => {}} />);
-    expect(getByText('Visible')).toBeVisible();
+    render(<Button label="Visible" onClick={jest.fn()} />);
+    expect(screen.getByRole('button', { name: 'Visible' })).toBeVisible();
   });
 
   test('checks that the background color changed when disabled', () => {
-    const { getByRole } = render(
-      <Button label="Test" disabled={true} onClick={() => {}} />
-    );
-    expect(getByRole('button')).toHaveStyle(
+    render(<Button label="Test" disabled={true} onClick={jest.fn()} />);
+    expect(screen.getByRole('button', { name: 'Test' })).toHaveStyle(
       'background-color: rgb(204, 204, 204);'
     );
   });

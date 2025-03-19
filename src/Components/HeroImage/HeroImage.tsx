@@ -20,7 +20,6 @@ const StyledHeroImage = styled.div<{
 
 const HeroImage: React.FC<HeroImageProps> = ({
   src,
-  alt,
   disabled,
   backgroundColor,
   ...rest
